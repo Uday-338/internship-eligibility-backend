@@ -17,8 +17,8 @@ public class DataInitializer {
          PasswordEncoder encoder) {
 
   return args -> {
-   String email = "udaynakkanaboina338@gmail.com";
-   String password = "1234567890";
+   String email = System.getenv().getOrDefault("ADMIN_EMAIL", "uday@gmail.com");
+   String password = System.getenv().getOrDefault("ADMIN_PASSWORD", "1234567890");
 
    User u = users.findByEmailIgnoreCase(email)
            .orElseGet(User::new);
