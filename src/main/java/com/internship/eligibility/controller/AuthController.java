@@ -1,0 +1,3 @@
+package com.internship.eligibility.controller;
+import com.internship.eligibility.dto.AuthDtos.*;import com.internship.eligibility.service.AuthService;import jakarta.validation.Valid;import org.springframework.http.*;import org.springframework.web.bind.annotation.*;
+@RestController @RequestMapping("/api/auth") public class AuthController {private final AuthService s;public AuthController(AuthService s){this.s=s;}@PostMapping("/register") ResponseEntity<UserResponse> register(@Valid @RequestBody RegisterRequest r){return ResponseEntity.status(201).body(s.register(r));}@PostMapping("/login") LoginResponse login(@Valid @RequestBody LoginRequest r){return s.login(r);}}

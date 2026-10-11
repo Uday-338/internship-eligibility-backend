@@ -1,0 +1,3 @@
+package com.internship.eligibility.controller;
+import com.internship.eligibility.dto.ApplicationDto.*;import com.internship.eligibility.entity.Application;import com.internship.eligibility.service.ApplicationService;import jakarta.validation.Valid;import org.springframework.security.core.Authentication;import org.springframework.web.bind.annotation.*;import java.util.*;
+@RestController @RequestMapping("/api/applications") public class ApplicationController {private final ApplicationService s;public ApplicationController(ApplicationService s){this.s=s;}@PostMapping Application create(Authentication a,@Valid @RequestBody CreateRequest r){return s.create(a.getName(),r);}@GetMapping("/my") List<Application> mine(Authentication a){return s.mine(a.getName());}}

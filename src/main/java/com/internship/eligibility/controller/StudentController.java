@@ -1,0 +1,3 @@
+package com.internship.eligibility.controller;
+import com.internship.eligibility.dto.StudentDto.*;import com.internship.eligibility.entity.Student;import com.internship.eligibility.service.StudentService;import jakarta.validation.Valid;import org.springframework.security.core.Authentication;import org.springframework.web.bind.annotation.*;
+@RestController @RequestMapping("/api/students") public class StudentController {private final StudentService s;public StudentController(StudentService s){this.s=s;}@GetMapping("/me") Student me(Authentication a){return s.get(a.getName());}@PutMapping("/me") Student update(Authentication a,@Valid @RequestBody UpdateRequest r){return s.update(a.getName(),r);}}
